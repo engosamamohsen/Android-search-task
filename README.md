@@ -1,4 +1,4 @@
-<h1 align="center">MovieHunt</h1>
+<h1 align="center">Android Search Task</h1>
 
 <p align="center">
 Android Search is a sample Android project using <a href="https://www.themoviedb.org/">The Movie DB</a> API based on MVVM architecture. It showcases the app development with well-designed architecture and up-to-date Android tech stacks.
