@@ -58,14 +58,9 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
             progress.set(false)
             response.body()?.let { resultResponse ->
                 page++
-                Log.d(TAG," page in response body $page")
                 if (this.movieResponse == null || page == 1 || newList) {
-                    Log.d(TAG," new here ")
                     this.movieResponse = resultResponse
                     if(search_position != -1){
-                        Log.d(TAG," search_position $search_position ")
-                        Log.d(TAG," result service ${movieResponse!!.movieList.size} ")
-
                         newList = true
                         val searchMovie = ListSearchHelper.searchResults[search_position]
                         searchMovie.page = page
@@ -73,8 +68,6 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
                         movieResponse!!.movieList = ArrayList(searchMovie.searchResult)
                         ListSearchHelper.searchResults.set(search_position,searchMovie)
 
-                        Log.d(TAG," searchResults ${ListSearchHelper.searchResults[search_position].searchResult.size} ")
-                        Log.d(TAG," allSearchResult ${ListSearchHelper.searchResults.size} ")
                         currentPosition.set("${movieResponse!!.movieList.size} / 1")
                     }
                 } else {
@@ -138,8 +131,6 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
                 search_position = ListSearchHelper.searchResults.size - 1
             }
         }
-        Log.d(TAG,"page is ${page}")
-        Log.d(TAG,"search_position is ${search_position}")
         getMovies()
     }
 

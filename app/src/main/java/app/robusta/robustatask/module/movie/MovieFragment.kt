@@ -97,11 +97,9 @@ class MovieFragment : Fragment() {
             when (response) {
 
                 is Resource.Success -> {
-                    Log.d(TAG, "done response")
                     response.data?.let { newsResponse ->
                         binding.rvSearchNews.recycledViewPool.clear()
                         adapterMovie.differ.submitList(newsResponse.movieList.toList())
-                        Log.d(TAG, "done here size: ${adapterMovie.differ.currentList.size}")
                         viewModel.haveData.set(!(newsResponse.movieList.size == 0 && viewModel.page == 1))
                         if(viewModel.page == 1){
                             viewModel.currentPosition.set("${adapterMovie.differ.currentList.size} / 1")

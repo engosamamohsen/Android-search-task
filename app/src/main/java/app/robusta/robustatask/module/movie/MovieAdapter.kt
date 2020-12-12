@@ -19,12 +19,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     val TAG = "NewsTAGAdapter"
     private val differCallback = object : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            Log.e(TAG,"areItemsTheSame")
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            Log.e(TAG,"areContentsTheSame")
             return oldItem == newItem
         }
     }
