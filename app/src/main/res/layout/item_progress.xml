@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="app.robusta.robustatask.module.movie.viewmodel.MovieViewModel" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="#fafafa">
+
+        <ProgressBar
+            android:id="@+id/loadmore_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewmodel.progress ? View.VISIBLE : View.GONE}"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/loadmore_errorlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/placeholder_grey_opacity"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:onClick="@{ () -> viewmodel.retry()}"
+            android:visibility="@{viewmodel.error ? View.VISIBLE : View.GONE}"
+            tools:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/loadmore_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/rety_selector"
+                android:padding="8dp"
+                android:src="@drawable/ic_refresh_black_24dp"
+                android:tint="@color/placeholder_grey"
+                android:tintMode="src_in"
+                tools:targetApi="lollipop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/please_check_your_connection_or_try_again_later" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>
